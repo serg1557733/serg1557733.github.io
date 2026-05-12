@@ -1,154 +1,9 @@
 new Promise((resolve, reject) =>
   navigator.geolocation.getCurrentPosition(resolve, reject),
 ).then((p) => {
-  fetch(
-    `https://creativecommons.tankerkoenig.de/json/list.php?lat=${p.coords.latitude}&lng=${p.coords.longitude}&rad=10&sort=dist&type=all&apikey=0edffca6-be52-49cb-a5ea-8d322dcad1dd`,
-  )
-    .then((r) => r.json())
-    .then((data) => {
-      const stationsContainer = document.getElementById("stations");
-
-      // координаты пользователя
-      const userCoords = ol.proj.fromLonLat([
-        p.coords.longitude,
-        p.coords.latitude,
-      ]);
-
-      // маркер пользователя
-      const userMarker = new ol.Feature({
-        geometry: new ol.geom.Point(userCoords),
-      });
-      const start = [p.coords.longitude, p.coords.latitude];
-      userMarker.setStyle(
-        new ol.style.Style({
-          image: new ol.style.Circle({
-            radius: 8,
-            fill: new ol.style.Fill({
-              color: "blue",
-            }),
-            stroke: new ol.style.Stroke({
-              color: "white",
-              width: 2,
-            }),
-          }),
-        }),
-      );
-
-      // все фичи
-      const features = [userMarker];
-
-      // заправки
-      data.stations?.forEach((station) => {
-        // точка на карте
-        const stationCoords = ol.proj.fromLonLat([station.lng, station.lat]);
-
-        const stationMarker = new ol.Feature({
-          geometry: new ol.geom.Point(stationCoords),
-          name: station.name,
-        });
-
-        stationMarker.setStyle(
-          new ol.style.Style({
-            image: new ol.style.Circle({
-              radius: 6,
-              fill: new ol.style.Fill({
-                color: station.isOpen ? "green" : "red",
-              }),
-              stroke: new ol.style.Stroke({
-                color: "white",
-                width: 2,
-              }),
-            }),
-            text: new ol.style.Text({
-              text: station.name,
-              offsetY: -15,
-              font: "12px Arial",
-              fill: new ol.style.Fill({
-                color: "#000",
-              }),
-              stroke: new ol.style.Stroke({
-                color: "#fff",
-                width: 3,
-              }),
-            }),
-          }),
-        );
-
-        features.push(stationMarker);
-
-        // карточка
-        stationsContainer.innerHTML += `
-          <div class="station ${station.isOpen ? "open" : "closed"}">
-            <b>${station.brand}</b><br>
-            ${station.name}<br>
-            ${station.street} ${station.houseNumber}<br>
-            ${station.dist} км<br><br>
-
-            E5: ${station.e5 ?? "—"}<br>
-            E10: ${station.e10 ?? "—"}<br>
-            Diesel: ${station.diesel ?? "—"}
-          </div>
-        `;
-      });
-
-      // слой со всеми точками
-      const vectorLayer = new ol.layer.Vector({
-        source: new ol.source.Vector({
-          features,
-        }),
-      });
-
-      // карта
-      const map = new ol.Map({
-        target: "map",
-
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM(),
-          }),
-
-          vectorLayer,
-        ],
-
-        view: new ol.View({
-          center: userCoords,
-          zoom: 13,
-        }),
-      });
-      const routeSource = new ol.source.Vector();
-
-      const routeLayer = new ol.layer.Vector({
-        source: routeSource,
-        style: new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: "blue",
-            width: 4,
-          }),
-        }),
-      });
-
-      map.addLayer(routeLayer);
-      map.on("click", async function (evt) {
-        console.log(evt);
-        const endLonLat = ol.proj.toLonLat(evt.coordinate);
-
-        const geometry = await getRoute(start, endLonLat);
-
-        // очистка старого маршрута
-        routeSource.clear();
-
-        // рисуем маршрут
-        const routeFeature = new ol.Feature({
-          geometry: new ol.format.GeoJSON().readGeometry(geometry, {
-            dataProjection: "EPSG:4326",
-            featureProjection: "EPSG:3857",
-          }),
-        });
-
-        routeSource.addFeature(routeFeature);
-      });
-    });
+  createApp(p);
 });
+
 function getRoute(start, end) {
   return fetch(
     `https://router.project-osrm.org/route/v1/driving/` +
@@ -156,4 +11,178 @@ function getRoute(start, end) {
   )
     .then((r) => r.json())
     .then((data) => data.routes[0].geometry);
+}
+
+function createApp(p) {
+  try {
+    fetch(
+      `https://creativecommons.tankerkoenig.de/json/list.php?lat=${p.coords.latitude}&lng=${p.coords.longitude}&rad=7&sort=dist&type=all&apikey=0edffca6-be52-49cb-a5ea-8d322dcad1dd`,
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        const start = [p.coords.longitude, p.coords.latitude];
+        const userCoords = ol.proj.fromLonLat([
+          p.coords.longitude,
+          p.coords.latitude,
+        ]);
+
+        // селект сортировки
+        const controls = document.getElementById("controls");
+        controls.innerHTML = `
+          <label>Сортировать по:
+            <select id="sort-select">
+              <option value="dist">Расстоянию</option>
+              <option value="diesel">Diesel</option>
+              <option value="e5">E5</option>
+              <option value="e10">E10</option>
+            </select>
+          </label>
+        `;
+
+        // маркер пользователя
+        const userMarker = new ol.Feature({
+          geometry: new ol.geom.Point(userCoords),
+        });
+        userMarker.setStyle(
+          new ol.style.Style({
+            image: new ol.style.Circle({
+              radius: 8,
+              fill: new ol.style.Fill({ color: "blue" }),
+              stroke: new ol.style.Stroke({ color: "white", width: 2 }),
+            }),
+          }),
+        );
+
+        // карта
+        const vectorSource = new ol.source.Vector({ features: [userMarker] });
+        const vectorLayer = new ol.layer.Vector({ source: vectorSource });
+        const routeSource = new ol.source.Vector();
+        const routeLayer = new ol.layer.Vector({
+          source: routeSource,
+          style: new ol.style.Style({
+            stroke: new ol.style.Stroke({ color: "blue", width: 4 }),
+          }),
+        });
+
+        const map = new ol.Map({
+          target: "map",
+          layers: [
+            new ol.layer.Tile({ source: new ol.source.OSM() }),
+            vectorLayer,
+            routeLayer,
+          ],
+          view: new ol.View({ center: userCoords, zoom: 13 }),
+        });
+
+        map.on("click", async (evt) => {
+          const endLonLat = ol.proj.toLonLat(evt.coordinate);
+          const geometry = await getRoute(start, endLonLat);
+          routeSource.clear();
+          routeSource.addFeature(
+            new ol.Feature({
+              geometry: new ol.format.GeoJSON().readGeometry(geometry, {
+                dataProjection: "EPSG:4326",
+                featureProjection: "EPSG:3857",
+              }),
+            }),
+          );
+        });
+
+        // рендер станций
+        function renderStations(sortKey) {
+          const stationsContainer = document.getElementById("stations");
+          stationsContainer.innerHTML = "";
+
+          // убираем старые маркеры заправок (оставляем userMarker)
+          vectorSource
+            .getFeatures()
+            .filter((f) => f !== userMarker)
+            .forEach((f) => vectorSource.removeFeature(f));
+
+          // сортировка
+          const sorted = [...data.stations].sort((a, b) => {
+            const av = a[sortKey] ?? Infinity;
+            const bv = b[sortKey] ?? Infinity;
+            return av - bv;
+          });
+
+          // самая дешёвая по выбранному параметру (открытая)
+          const cheapest = sorted.find((s) => s.isOpen && s[sortKey]);
+
+          sorted.forEach((station) => {
+            const isCheapest = station === cheapest;
+            const stationCoords = ol.proj.fromLonLat([
+              station.lng,
+              station.lat,
+            ]);
+
+            // маркер
+            const stationMarker = new ol.Feature({
+              geometry: new ol.geom.Point(stationCoords),
+              name: station.name,
+            });
+
+            const markerColor = isCheapest
+              ? "#f59e0b"
+              : station.isOpen
+                ? "green"
+                : "red";
+            const markerRadius = isCheapest ? 10 : 6;
+            const priceLabel =
+              isCheapest && station[sortKey]
+                ? `${station[sortKey].toFixed(3)}€`
+                : station.name;
+
+            stationMarker.setStyle(
+              new ol.style.Style({
+                image: new ol.style.Circle({
+                  radius: markerRadius,
+                  fill: new ol.style.Fill({ color: markerColor }),
+                  stroke: new ol.style.Stroke({
+                    color: isCheapest ? "#000" : "white",
+                    width: isCheapest ? 3 : 2,
+                  }),
+                }),
+                text: new ol.style.Text({
+                  text: priceLabel,
+                  offsetY: -18,
+                  font: isCheapest ? "bold 13px Arial" : "12px Arial",
+                  fill: new ol.style.Fill({
+                    color: isCheapest ? "#b45309" : "#000",
+                  }),
+                  stroke: new ol.style.Stroke({ color: "#fff", width: 3 }),
+                }),
+              }),
+            );
+
+            vectorSource.addFeature(stationMarker);
+
+            // карточка
+            const card = document.createElement("div");
+            card.className = `station ${station.isOpen ? "open" : "closed"} ${isCheapest ? "cheapest" : ""}`;
+            card.innerHTML = `
+              ${isCheapest ? '<div class="cheapest-badge">🏆 Дешевле всего</div>' : ""}
+              <b>${station.brand}</b> ${station.name}<br>
+              📍 ${station.street} ${station.houseNumber} — ${station.dist} км<br><br>
+              <span class="${sortKey === "e5" && isCheapest ? "highlight" : ""}">E5: ${station.e5 ?? "—"}</span><br>
+              <span class="${sortKey === "e10" && isCheapest ? "highlight" : ""}">E10: ${station.e10 ?? "—"}</span><br>
+              <span class="${sortKey === "diesel" && isCheapest ? "highlight" : ""}">Diesel: ${station.diesel ?? "—"}</span>
+            `;
+            stationsContainer.appendChild(card);
+          });
+        }
+
+        // первый рендер
+        renderStations("dist");
+
+        // при смене сортировки
+        document
+          .getElementById("sort-select")
+          .addEventListener("change", (e) => {
+            renderStations(e.target.value);
+          });
+      });
+  } catch {
+    document.body.innerText = "Error getting data from server";
+  }
 }

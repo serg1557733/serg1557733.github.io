@@ -74,3 +74,21 @@
   font-weight: 600;
   color: #111827;
 }
+.cheapest {
+  border: 2px solid #f59e0b;
+  background: #fffbeb;
+}
+.cheapest-badge {
+  background: #f59e0b;
+  color: #7c2d00;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.highlight {
+  font-weight: bold;
+  color: #b45309;
+}
