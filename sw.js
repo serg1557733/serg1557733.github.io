@@ -173,7 +173,7 @@ function createApp(p) {
         }
 
         // первый рендер
-        renderStations("dist");
+        renderStations("diesel");
 
         // при смене сортировки
         document
