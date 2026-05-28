@@ -3,7 +3,9 @@ new Promise((resolve, reject) =>
 ).then((p) => {
   createApp(p);
 });
-
+window.addEventListener("load", () => {
+  document.getElementById("loader").style.display = "none";
+});
 function getRoute(start, end) {
   return fetch(
     `https://router.project-osrm.org/route/v1/driving/` +

@@ -92,3 +92,202 @@
   font-weight: bold;
   color: #b45309;
 }
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: white;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+
+  border: 4px solid #ddd;
+  border-top: 4px solid #000;
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+.text {
+  margin-top: 12px;
+  font-family: Arial;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: white;
+  z-index: 9999;
+}
+
+.fuel-loader {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+/* Канистра */
+.canister {
+  position: absolute;
+  top: 10px;
+  left: -20px;
+
+  width: 60px;
+  height: 80px;
+  rotate: 34deg;
+  background: #222;
+  border-radius: 10px;
+
+  transform-origin: bottom right;
+  animation: tilt 2s infinite ease-in-out;
+}
+
+/* Ручка */
+.canister::before {
+  content: "";
+
+  position: absolute;
+  top: -10px;
+  left: 15px;
+
+  width: 30px;
+  height: 12px;
+
+  border: 5px solid #222;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Носик */
+.canister::after {
+  content: "";
+
+  position: absolute;
+  right: -12px;
+  top: 18px;
+
+  width: 18px;
+  height: 8px;
+
+  background: #222;
+  border-radius: 4px;
+}
+
+/* Струя топлива */
+.fuel-stream {
+  position: absolute;
+  top: 48px;
+  left: 82px;
+
+  width: 6px;
+  height: 0;
+
+  background: #00c853;
+  border-radius: 3px;
+
+  animation: pour 2s infinite ease-in-out;
+}
+
+/* Капля */
+.fuel-drop {
+  position: absolute;
+  top: 85px;
+  left: 78px;
+
+  width: 12px;
+  height: 12px;
+
+  background: #00c853;
+  border-radius: 50%;
+
+  opacity: 0;
+
+  animation: drip 1.5s infinite ease-in-out;
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-25deg);
+  }
+
+  70% {
+    transform: rotate(-25deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pour {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  25% {
+    height: 45px;
+    opacity: 1;
+  }
+
+  70% {
+    height: 45px;
+    opacity: 1;
+  }
+
+  100% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes drip {
+  0%,
+  20% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateY(20px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(35px);
+    opacity: 0;
+  }
+}
