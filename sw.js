@@ -38,7 +38,7 @@ function getRoute(start, end) {
     .then((data) => data.routes[0].geometry);
 }
 
-function createApp(p, radius = 10) {
+function createApp(p, radius = 5) {
   const start = [p.coords.longitude, p.coords.latitude];
 
   const userCoords = ol.proj.fromLonLat(start);
@@ -265,12 +265,8 @@ function createApp(p, radius = 10) {
     })
     .catch((e) => {
       console.error(e);
-
-      document.body.insertAdjacentHTML(
-        "afterbegin",
-        document.getElementById("gps-status").innerHTML,
-      );
-
-      setTimeout(() => document.getElementById("gps-status")?.remove(), 4000);
+      const loader = document.getElementById("gps-status");
+      loader.style.display = "flex";
+      loader.innerHTML += `<h2>${e?.message}</h2>`;
     });
 }

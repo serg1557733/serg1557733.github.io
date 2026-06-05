@@ -191,27 +191,12 @@ body {
   font-size: 15px;
 }
 
-#gps-status::after {
-  content: "";
-
-  width: 250px;
-  height: 6px;
-
-  margin-top: 25px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.15);
-
-  overflow: hidden;
-}
-
 #gps-status::before {
   content: "";
 
   position: absolute;
 
-  bottom: calc(50% - 170px);
+  top: calc(70%);
 
   width: 50px;
   height: 6px;
@@ -231,4 +216,136 @@ body {
   to {
     transform: translateX(100px);
   }
+}
+
+#stations {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px;
+}
+
+/* CARD */
+.station-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 16px;
+
+  padding: 14px;
+
+  color: #fff;
+
+  font-family: system-ui;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+
+  transition: 0.2s ease;
+}
+
+.station-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* TOP */
+.station-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 6px;
+}
+
+.brand {
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.station-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.station-address,
+.station-dist {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* BADGES */
+.badges {
+  display: flex;
+  gap: 6px;
+}
+
+.badge {
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.badge.open {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.badge.closed {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.badge.best {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+/* PRICES */
+.prices {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.price {
+  flex: 1;
+
+  padding: 10px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  text-align: center;
+
+  transition: 0.2s;
+}
+
+.price .label {
+  display: block;
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.price .value {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ACTIVE PRICE */
+.price.active {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  transform: scale(1.05);
+}
+
+/* BEST CARD */
+.station-card.best {
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
 }
