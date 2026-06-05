@@ -427,9 +427,10 @@ function createApp(p, radius = 5) {
             : `https://www.google.com/maps?q=${station.lat},${station.lng}`;
           card.innerHTML = `
   <div class="station-header">
-    <span class="brand">${station.brand || ""}<span class="status-badge ${station.isOpen ? "open" : "closed"}">
+   <div><p class="brand">${station.brand || ""}</p>
+    <p class="status-badge ${station.isOpen ? "open" : "closed"}">
         ${station.isOpen ? "OPEN" : "CLOSED"}
-      </span></span>
+      </p></div> 
     <div class="station-address">
     ${station.name}📍  ${station.postCode || ""}, ${station.place || ""},
     ${station.street || ""} , ${station.houseNumber || ""}

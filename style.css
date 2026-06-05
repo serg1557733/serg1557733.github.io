@@ -12,7 +12,7 @@
 .station.closed {
   border-left: 4px solid #ef4444;
   background-color: darkgrey;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .station-header {
