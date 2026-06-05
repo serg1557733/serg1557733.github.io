@@ -9,9 +9,14 @@ let routeLayer;
 
 let routeClickBound = false;
 const k = "0edffca6-be52-49cb-a5ea-8d322dcad1dd";
-
+//write with Java or Angular
+// // save prices im Localstorage ?
+// // create graph for pricing with auto request 15 min
 async function startApp() {
   const loader = document.getElementById("gps-status");
+  // const lastPrice = document.localStorage.getItem(PRICE) ?? {
+  //   time: new Date().time,
+  // };
   new Promise((resolve, reject) =>
     navigator.geolocation.getCurrentPosition(resolve, reject),
   )
@@ -43,8 +48,176 @@ function createApp(p, radius = 5) {
 
   const userCoords = ol.proj.fromLonLat(start);
 
+  // Promise.resolve({
+  //   ok: true,
+  //   license: "CC BY 4.0 -  https:\/\/creativecommons.tankerkoenig.de",
+  //   data: "MTS-K",
+  //   status: "ok",
+  //   stations: [
+  //     {
+  //       id: "2db9e64f-dbb9-4b9b-bf8c-27cbdb7f5e9d",
+  //       name: "Sprint Ilmenau Schleusinger Allee",
+  //       brand: "Sprint",
+  //       street: "Schleusinger Allee",
+  //       place: "Ilmenau",
+  //       lat: 50.682407,
+  //       lng: 10.908607,
+  //       dist: 1,
+  //       diesel: 1.959,
+  //       e5: 2.039,
+  //       e10: 1.979,
+  //       isOpen: true,
+  //       houseNumber: "21 a",
+  //       postCode: 98693,
+  //     },
+  //     {
+  //       id: "1d6fc31f-dd63-4388-b45f-99845d9eaf55",
+  //       name: "TotalEnergies Ilmenau",
+  //       brand: "TotalEnergies",
+  //       street: "Grenzhammer",
+  //       place: "Ilmenau",
+  //       lat: 50.678669,
+  //       lng: 10.935988,
+  //       dist: 1.1,
+  //       diesel: 1.969,
+  //       e5: 2.049,
+  //       e10: 1.989,
+  //       isOpen: true,
+  //       houseNumber: "4",
+  //       postCode: 98693,
+  //     },
+  //     {
+  //       id: "0139fb5f-fe75-4d06-9e88-4ed45a862fea",
+  //       name: "Shell Ilmenau Ziolkowskistr. 9",
+  //       brand: "Shell",
+  //       street: "Ziolkowskistr.",
+  //       place: "Ilmenau",
+  //       lat: 50.695109,
+  //       lng: 10.927974,
+  //       dist: 1.3,
+  //       diesel: 1.969,
+  //       e5: 2.049,
+  //       e10: 1.989,
+  //       isOpen: true,
+  //       houseNumber: "9",
+  //       postCode: 98693,
+  //     },
+  //     {
+  //       id: "b43b89b9-798a-4d2f-891d-8df0a41d0545",
+  //       name: "ILMENAU - BUECHELOHER STR.\/B 87",
+  //       brand: "AGIP ENI",
+  //       street: "Buecheloher Str.",
+  //       place: "Ilmenau",
+  //       lat: 50.690343428429,
+  //       lng: 10.94027343649,
+  //       dist: 1.4,
+  //       diesel: 1.969,
+  //       e5: 2.049,
+  //       e10: 1.989,
+  //       isOpen: true,
+  //       houseNumber: "16",
+  //       postCode: 98693,
+  //     },
+  //     {
+  //       id: "ab9d0fe4-64e8-4a61-808f-c2e4ac84c270",
+  //       name: "TotalEnergies Ilmenau",
+  //       brand: "TotalEnergies",
+  //       street: "Erfurter Str.",
+  //       place: "Ilmenau",
+  //       lat: 50.691333,
+  //       lng: 10.904988,
+  //       dist: 1.5,
+  //       diesel: 1.969,
+  //       e5: 2.049,
+  //       e10: 1.989,
+  //       isOpen: true,
+  //       houseNumber: "60",
+  //       postCode: 98693,
+  //     },
+  //     {
+  //       id: "005056ba-7cb6-1ed2-bceb-c4e92d668d53",
+  //       name: "star Tankstelle",
+  //       brand: "STAR",
+  //       street: "Erfurter Stra\u00dfe",
+  //       place: "Ilmenau",
+  //       lat: 50.693076,
+  //       lng: 10.900862,
+  //       dist: 1.8,
+  //       diesel: 1.929,
+  //       e5: 2.009,
+  //       e10: 1.959,
+  //       isOpen: false,
+  //       houseNumber: "65",
+  //       postCode: 98693,
+  //     },
+  //     {
+  //       id: "3786e71d-2c37-47ff-b8fb-408fbc6d2dee",
+  //       name: "Th\u00fcringer Wald S\u00fcd",
+  //       brand: "ARAL",
+  //       street: "BAB 71",
+  //       place: "Geraberg",
+  //       lat: 50.72531,
+  //       lng: 10.8458109,
+  //       dist: 7.1,
+  //       diesel: 2.459,
+  //       e5: 2.509,
+  //       e10: 2.449,
+  //       isOpen: true,
+  //       houseNumber: "",
+  //       postCode: 98716,
+  //     },
+  //     {
+  //       id: "4af5e1d3-16b8-43bf-2887-304e64861987",
+  //       name: "Gulf Geraberg",
+  //       brand: "GULF",
+  //       street: "Elgersburger Str.",
+  //       place: "Geratal OTGeraberg",
+  //       lat: 50.7118,
+  //       lng: 10.8295,
+  //       dist: 7.3,
+  //       diesel: 1.959,
+  //       e5: 2.059,
+  //       e10: null,
+  //       isOpen: true,
+  //       houseNumber: "1",
+  //       postCode: 99331,
+  //     },
+  //     {
+  //       id: "1e5a6f9f-9409-4a4e-bd4d-a2316907ee58",
+  //       name: "Th\u00fcringer Wald Nord",
+  //       brand: "ESSO",
+  //       street: "BAB 71",
+  //       place: "Geraberg",
+  //       lat: 50.7265129,
+  //       lng: 10.8439121,
+  //       dist: 7.3,
+  //       diesel: 2.459,
+  //       e5: 2.509,
+  //       e10: 2.449,
+  //       isOpen: true,
+  //       houseNumber: "",
+  //       postCode: 98716,
+  //     },
+  //     {
+  //       id: "230b3009-1ba5-4741-8a32-5d127780921c",
+  //       name: "AVIA XPress",
+  //       brand: "AVIA XPress",
+  //       street: "Gro\u00dfbreitenbacher Stra\u00dfe",
+  //       place: "Ilmenau",
+  //       lat: 50.63887,
+  //       lng: 11.00272,
+  //       dist: 7.5,
+  //       diesel: 1.899,
+  //       e5: 1.979,
+  //       e10: 1.929,
+  //       isOpen: true,
+  //       houseNumber: "31a",
+  //       postCode: 98694,
+  //     },
+  //   ],
+  // })
   fetch(
-    `https://creativecommons.tankerkoenig.de/json/list.php?lat=${p.coords.latitude}&lng=${p.coords.longitude}&rad=${radius}&sort=dist&type=all&apikey=${k}`,
+    `https://creativecommons.tankerkoenig.de/json/list.php?lat=${p.coords.latitude}&lng=${p.coords.longitude}&rad=${radius}&type=all&apikey=${k}`,
   )
     .then((r) => r.json())
     .then((data) => {
@@ -76,8 +249,8 @@ function createApp(p, radius = 5) {
 
           <select id="radiusSelect">
             <option value="2">2 km</option>
-            <option value="5">5 km</option>
-            <option value="10" selected>10 km</option>
+            <option value="5" selected >5 km</option>
+            <option value="10">10 km</option>
             <option value="20">20 km</option>
           </select>
         `;
@@ -247,16 +420,58 @@ function createApp(p, radius = 5) {
 
           const card = document.createElement("div");
           card.className = `station ${station.isOpen ? "open" : "closed"}`;
-
+          const mapUrl = /iPhone|iPad|iPod|AppleWebKit/i.test(
+            navigator.userAgent,
+          )
+            ? `https://maps.apple.com/?ll=${station.lat},${station.lng}&q=${encodeURIComponent(station.name)}`
+            : `https://www.google.com/maps?q=${station.lat},${station.lng}`;
           card.innerHTML = `
-            <b>${station.brand}</b> ${station.name}<br>
-            📍 ${station.street} ${station.houseNumber} — ${station.dist} km<br>
-            E5: ${station.e5 ?? "—"}<br>
-            E10: ${station.e10 ?? "—"}<br>
-            Diesel: ${station.diesel ?? "—"}
-          `;
+  <div class="station-header">
+    <span class="brand">${station.brand || ""}<span class="status-badge ${station.isOpen ? "open" : "closed"}">
+        ${station.isOpen ? "OPEN" : "CLOSED"}
+      </span></span>
+    <div class="station-address">
+    ${station.name}📍  ${station.postCode || ""}, ${station.place || ""},
+    ${station.street || ""} , ${station.houseNumber || ""}
+  </div>
+    <span class="distance">${station.dist} km</span>
+  </div>
+
+
+  <div class="fuel-prices">
+    <div class="fuel">
+      <span class="fuel-label">E5</span>
+      <span class="fuel-value">${station.e5 ?? "—"} €</span>
+    </div>
+
+    <div class="fuel">
+      <span class="fuel-label">E10</span>
+      <span class="fuel-value">${station.e10 ?? "—"} €</span>
+    </div>
+
+    <div class="fuel">
+      <span class="fuel-label">Diesel</span>
+    <span class="fuel-value diesel-price">
+                  ${station.diesel ?? "—"} €
+          </span>    </div>
+  </div>
+
+  <a
+    class="navigate-btn"
+    href="${mapUrl}"
+    target="_blank"
+    rel="noopener"
+  >
+    ${station.dist}  🧭 OPEN IN MAPS
+  </a>
+`;
 
           stationsContainer.appendChild(card);
+
+          function openInAppleMaps(lat, lng, name = "") {
+            const url = `https://maps.apple.com/?ll=${lat},${lng}&q=${encodeURIComponent(name)}`;
+            window.open(url, "_blank");
+          }
         });
       }
 

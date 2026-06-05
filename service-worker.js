@@ -1,4 +1,4 @@
-const CACHE = "app-v6";
+const CACHE = "app-v7";
 
 const STATIC_ASSETS = ["/", "/index.html", "/main.js", "/style.css"];
 
