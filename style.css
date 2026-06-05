@@ -98,7 +98,12 @@ body {
   height: 100%;
 }
 
-#loader {
+.text {
+  margin-top: 12px;
+  font-family: Arial;
+}
+
+#gps-status {
   position: fixed;
   inset: 0;
 
@@ -107,187 +112,123 @@ body {
   justify-content: center;
   align-items: center;
 
-  background: white;
-  z-index: 9999;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+
+  color: white;
+  z-index: 99999;
+
+  font-family: system-ui;
 }
 
-.spinner {
-  width: 50px;
-  height: 50px;
+.fuel-search {
+  position: relative;
 
-  border: 4px solid #ddd;
-  border-top: 4px solid #000;
-  border-radius: 50%;
+  width: 180px;
+  height: 180px;
 
-  animation: spin 1s linear infinite;
+  margin-bottom: 30px;
 }
 
-.text {
-  margin-top: 12px;
-  font-family: Arial;
+.fuel-icon {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 56px;
+
+  z-index: 10;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#loader {
-  position: fixed;
+.radar {
+  position: absolute;
   inset: 0;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: white;
-  z-index: 9999;
+  border-radius: 50%;
 }
 
-.fuel-loader {
-  position: relative;
-  width: 120px;
-  height: 120px;
-}
-
-/* Канистра */
-.canister {
-  position: absolute;
-  top: 10px;
-  left: -20px;
-
-  width: 60px;
-  height: 80px;
-  rotate: 34deg;
-  background: #222;
-  border-radius: 10px;
-
-  transform-origin: bottom right;
-  animation: tilt 2s infinite ease-in-out;
-}
-
-/* Ручка */
-.canister::before {
+.radar::before,
+.radar::after {
   content: "";
 
   position: absolute;
-  top: -10px;
-  left: 15px;
+  inset: 0;
 
-  width: 30px;
-  height: 12px;
-
-  border: 5px solid #222;
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-}
-
-/* Носик */
-.canister::after {
-  content: "";
-
-  position: absolute;
-  right: -12px;
-  top: 18px;
-
-  width: 18px;
-  height: 8px;
-
-  background: #222;
-  border-radius: 4px;
-}
-
-/* Струя топлива */
-.fuel-stream {
-  position: absolute;
-  top: 48px;
-  left: 82px;
-
-  width: 6px;
-  height: 0;
-
-  background: #00c853;
-  border-radius: 3px;
-
-  animation: pour 2s infinite ease-in-out;
-}
-
-/* Капля */
-.fuel-drop {
-  position: absolute;
-  top: 85px;
-  left: 78px;
-
-  width: 12px;
-  height: 12px;
-
-  background: #00c853;
   border-radius: 50%;
 
-  opacity: 0;
+  border: 4px solid #22c55e;
 
-  animation: drip 1.5s infinite ease-in-out;
+  animation: pulse 2s infinite;
 }
 
-@keyframes tilt {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  25% {
-    transform: rotate(-25deg);
-  }
-
-  70% {
-    transform: rotate(-25deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
+.radar::after {
+  animation-delay: 1s;
 }
 
-@keyframes pour {
-  0% {
-    height: 0;
-    opacity: 0;
-  }
-
-  25% {
-    height: 45px;
+@keyframes pulse {
+  from {
+    transform: scale(0.2);
     opacity: 1;
   }
 
-  70% {
-    height: 45px;
-    opacity: 1;
-  }
-
-  100% {
-    height: 0;
+  to {
+    transform: scale(1.4);
     opacity: 0;
   }
 }
 
-@keyframes drip {
-  0%,
-  20% {
-    transform: translateY(0);
-    opacity: 0;
+#gps-status h2 {
+  margin: 10px 0 8px;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#gps-status p {
+  opacity: 0.8;
+  font-size: 15px;
+}
+
+#gps-status::after {
+  content: "";
+
+  width: 250px;
+  height: 6px;
+
+  margin-top: 25px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  overflow: hidden;
+}
+
+#gps-status::before {
+  content: "";
+
+  position: absolute;
+
+  bottom: calc(50% - 170px);
+
+  width: 50px;
+  height: 6px;
+
+  border-radius: 999px;
+
+  background: #22c55e;
+
+  animation: loading 3.5s infinite alternate-reverse;
+}
+
+@keyframes loading {
+  from {
+    transform: translateX(-100px);
   }
 
-  40% {
-    opacity: 1;
-  }
-
-  70% {
-    transform: translateY(20px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(35px);
-    opacity: 0;
+  to {
+    transform: translateX(100px);
   }
 }

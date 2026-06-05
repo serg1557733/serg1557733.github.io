@@ -9,12 +9,25 @@ let routeLayer;
 
 let routeClickBound = false;
 const k = "0edffca6-be52-49cb-a5ea-8d322dcad1dd";
-new Promise((resolve, reject) =>
-  navigator.geolocation.getCurrentPosition(resolve, reject),
-).then((p) => {
-  position = p;
-  createApp(p, 10);
-});
+
+async function startApp() {
+  const loader = document.getElementById("gps-status");
+  new Promise((resolve, reject) =>
+    navigator.geolocation.getCurrentPosition(resolve, reject),
+  )
+    .then((p) => {
+      position = p;
+      createApp(p, 10);
+      loader.style.display = "none";
+    })
+    .catch((e) => {
+      loader.style.display = "flex";
+      loader.innerHTML += `<h2>${e?.message}</h2>`;
+      console.error(e);
+    });
+}
+
+startApp();
 
 function getRoute(start, end) {
   return fetch(
@@ -30,9 +43,6 @@ function createApp(p, radius = 10) {
 
   const userCoords = ol.proj.fromLonLat(start);
 
-  const loader = document.getElementById("loader");
-  loader.style.display = "flex";
-
   fetch(
     `https://creativecommons.tankerkoenig.de/json/list.php?lat=${p.coords.latitude}&lng=${p.coords.longitude}&rad=${radius}&sort=dist&type=all&apikey=${k}`,
   )
@@ -45,7 +55,6 @@ function createApp(p, radius = 10) {
       if (!Array.isArray(data?.stations)) {
         throw new Error("Invalid stations response");
       }
-      loader.style.display = "none";
       // ----------------------------
       // CONTROLS (create once)
       // ----------------------------
@@ -252,23 +261,16 @@ function createApp(p, radius = 10) {
       }
 
       renderStations("diesel");
+      document.getElementById("gps-status").remove();
     })
     .catch((e) => {
       console.error(e);
 
-      loader.style.display = "flex";
+      document.body.insertAdjacentHTML(
+        "afterbegin",
+        document.getElementById("gps-status").innerHTML,
+      );
 
-      const div = document.createElement("div");
-      div.className = "error-toast";
-      div.innerText =
-        "Error getting data from server: " + (e?.message || "unknown");
-
-      loader.appendChild(div);
-
-      setTimeout(() => div.remove(), 4000);
+      setTimeout(() => document.getElementById("gps-status")?.remove(), 4000);
     });
 }
-
-window.addEventListener("load", () => {
-  document.getElementById("loader").style.display = "none";
-});
