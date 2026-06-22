@@ -237,6 +237,8 @@ function createApp(p, radius = 5) {
         controls.dataset.ready = "true";
 
         controls.innerHTML = `
+        <div class='logo'><img src="./icon-512.png" width="50" height="50" alt="logo">        <h1>Fuel Finder</h1></div>
+
           <label>
             Sort:
             <select id="sort-select">
@@ -244,15 +246,16 @@ function createApp(p, radius = 5) {
               <option value="diesel">Diesel</option>
               <option value="e5">E5</option>
               <option value="e10">E10</option>
-            </select>
-          </label>
-
-          <select id="radiusSelect">
+            </select>  
+            <select id="radiusSelect">
             <option value="2">2 km</option>
             <option value="5" selected >5 km</option>
             <option value="10">10 km</option>
             <option value="20">20 km</option>
           </select>
+          </label>
+
+        
         `;
 
         const radiusSelect = document.getElementById("radiusSelect");
@@ -427,14 +430,14 @@ function createApp(p, radius = 5) {
             : `https://www.google.com/maps?q=${station.lat},${station.lng}`;
           card.innerHTML = `
   <div class="station-header">
-   <div><p class="brand">${station.brand || ""}</p>
-    <p class="status-badge ${station.isOpen ? "open" : "closed"}">
+  <div class='logo'>   <p class="status-badge ${station.isOpen ? "open" : "closed"}">
         ${station.isOpen ? "OPEN" : "CLOSED"}
-      </p></div> 
-    <div class="station-address">
-    ${station.name}📍  ${station.postCode || ""}, ${station.place || ""},
-    ${station.street || ""} , ${station.houseNumber || ""}
-  </div>
+      </p>
+   <p class="brand">
+   ${station.brand || ""}</p></div>
+ 
+   <p>${station.name}</p>
+
     <span class="distance">${station.dist} km</span>
   </div>
 
@@ -456,14 +459,17 @@ function createApp(p, radius = 5) {
                   ${station.diesel ?? "—"} €
           </span>    </div>
   </div>
-
+    <div class="station-address">
+     📍${station.postCode || ""}, ${station.place || ""},
+    ${station.street || ""} , ${station.houseNumber || ""}
+  </div>
   <a
     class="navigate-btn"
     href="${mapUrl}"
     target="_blank"
     rel="noopener"
   >
-    ${station.dist}  🧭 OPEN IN MAPS
+    ${station.dist} km 🧭 OPEN IN MAPS
   </a>
 `;
 

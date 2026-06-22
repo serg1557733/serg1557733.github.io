@@ -7,32 +7,34 @@
 }
 .station.open {
   border-left: 4px solid #22c55e;
-  background-color: antiquewhite;
+  background-color: rgb(247, 247, 247);
 }
 .station.closed {
   border-left: 4px solid #ef4444;
-  background-color: darkgrey;
+  background-color: rgb(226, 216, 216);
   opacity: 0.8;
 }
 
 .station-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin-bottom: 8px;
+  border: 0.65em solid;
+  border-style: inset;
 }
 
 .brand {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
+  color: #7e1c1c;
 }
 
 .distance {
-  background: #2563eb;
+  background: #213c71;
   width: 150px;
   text-align: center;
   color: white;
-  padding: 4px 10px;
+  padding: 5px 8px;
   border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
@@ -46,6 +48,7 @@
 
 .fuel-prices {
   display: flex;
+  border-radius: 5%;
   gap: 10px;
   margin-bottom: 12px;
 }
@@ -55,6 +58,9 @@
   font-size: 18px;
   font-weight: 700;
   color: #111;
+  border-radius: 15px;
+  font-family: "Digital-7", "Courier New", monospace;
+  padding: 0.3rem;
 }
 .diesel-price {
   color: #dc2626;
@@ -63,14 +69,11 @@
 .fuel {
   flex: 1;
   text-align: center;
-  background: #f5f5f5;
-  border-radius: 12px;
   padding: 10px;
 }
 
 .fuel-label {
   display: block;
-  color: #2b5bc3;
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 4px;
@@ -83,13 +86,18 @@
   padding: 12px;
   border-radius: 12px;
 
-  background: #2563eb;
+  background: #f0f0f0;
   color: white;
 
   text-decoration: none;
   font-weight: 600;
 
   transition: 0.2s;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navigate-btn:hover {
@@ -106,7 +114,7 @@
 .value {
   font-size: 16px;
   font-weight: 600;
-  color: #111827;
+  color: #f2f2f2;
 }
 .cheapest {
   border: 2px solid #f59e0b;
@@ -234,11 +242,8 @@ body {
 
   width: 50px;
   height: 6px;
-
   border-radius: 999px;
-
   background: #22c55e;
-
   animation: loading 3.5s infinite alternate-reverse;
 }
 
@@ -261,7 +266,7 @@ body {
 
 /* CARD */
 .station-card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(107, 78, 78, 0.08);
   backdrop-filter: blur(12px);
 
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -277,11 +282,6 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 
   transition: 0.2s ease;
-}
-
-.station-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* TOP */
@@ -347,15 +347,10 @@ body {
 
 .price {
   flex: 1;
-
   padding: 10px;
-
   border-radius: 12px;
-
   background: rgba(255, 255, 255, 0.05);
-
   text-align: center;
-
   transition: 0.2s;
 }
 
@@ -390,7 +385,7 @@ body {
   text-align: center;
   text-decoration: none;
   border-radius: 12px;
-  background: #3b65c0;
+  background: rgb(52, 57, 76);
   color: white;
   font-weight: 500;
 }
@@ -420,4 +415,22 @@ body {
   background: rgba(239, 68, 68, 0.15);
   color: #dc2626;
   border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+#controls {
+  background-color: #1c2b49;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  gap: 1rem;
+  color: white;
+  font: 800;
+  select {
+    color: white;
+    background-color: rgb(52, 57, 76);
+    height: 2rem;
+    width: 10rem;
+  }
 }
