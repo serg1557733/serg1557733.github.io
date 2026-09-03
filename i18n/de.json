@@ -1,0 +1,111 @@
+{
+  "header": {
+    "title": "Fuel Finder"
+  },
+  "address": {
+    "placeholder": "Adresse oder Stadt eingeben",
+    "geoAria": "Meinen Standort verwenden",
+    "searchAria": "Suchen"
+  },
+  "error": {
+    "locationDenied": "Standort konnte nicht ermittelt werden. Bitte geben Sie eine Adresse ein.",
+    "addressNotFound": "Adresse nicht gefunden.",
+    "stationsLoad": "Tankstellen konnten nicht geladen werden.",
+    "route": "Route konnte nicht berechnet werden.",
+    "stationDetails": "Details zur Tankstelle konnten nicht geladen werden."
+  },
+  "status": {
+    "loading": "Tankstellen werden geladen…",
+    "noLocation": "Bitte Standortzugriff erlauben oder Adresse eingeben.",
+    "noResults": "Keine Tankstellen für die aktuellen Filter."
+  },
+  "filter": {
+    "title": "Filter",
+    "found": "Gefunden: {{count}}",
+    "fuel": {
+      "label": "Kraftstoff",
+      "all": "Alle",
+      "e5": "E5",
+      "e10": "E10",
+      "diesel": "Diesel"
+    },
+    "sort": {
+      "label": "Sortieren nach",
+      "distance": "Entfernung",
+      "price": "Preis",
+      "benefit": "Schnäppchen"
+    },
+    "radius": {
+      "label": "Radius: {{km}} km"
+    },
+    "openOnly": "Nur geöffnete",
+    "favoritesOnly": "Nur Favoriten"
+  },
+  "card": {
+    "open": "Geöffnet",
+    "closed": "Geschlossen",
+    "favoriteAdd": "Zu Favoriten hinzufügen",
+    "favoriteRemove": "Aus Favoriten entfernen",
+    "distance": "{{value}} km",
+    "openInMaps": "Route",
+    "nearest": "Nächste",
+    "fuel": {
+      "e5": "E5",
+      "e10": "E10",
+      "diesel": "Diesel"
+    }
+  },
+  "sheet": {
+    "stationsNearby": "{{count}} Tankstellen in der Nähe",
+    "findStations": "Tankstellen finden"
+  },
+  "locate": {
+    "aria": "Auf meinen Standort zentrieren"
+  },
+  "settings": {
+    "aria": "Einstellungen"
+  },
+  "install": {
+    "action": "App installieren"
+  },
+  "theme": {
+    "title": "Design",
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
+  "language": {
+    "aria": "Sprache",
+    "en": "Englisch",
+    "ru": "Russisch",
+    "de": "Deutsch"
+  },
+  "vehicle": {
+    "title": "Mein Fahrzeug",
+    "fuelType": "Kraftstoffart",
+    "consumption": "Verbrauch (l/100km)",
+    "consumptionPlaceholder": "z. B. 6.5",
+    "refuelLiters": "Tankmenge (optional, Liter)",
+    "refuelPlaceholder": "z. B. 40",
+    "refuelHint": "Wird zur Berechnung der Ersparnis gegenüber der nächsten Tankstelle verwendet.",
+    "profitDescription": "So wird gerechnet: Vorteil = (Preis an der nächsten Tankstelle − Preis hier) × Tankmenge − zusätzliche Kraftstoffkosten für die Fahrt hierher statt zur nächsten Tankstelle.",
+    "save": "Speichern"
+  },
+  "trip": {
+    "fuelCost": "Kraftstoff für die Fahrt",
+    "benefit": "Netto-Vorteil",
+    "loss": "Netto-Nachteil",
+    "setupVehicle": "Fahrzeug einrichten, um Ersparnis zu sehen",
+    "vsNearestHint": "Berechnet im Vergleich zur nächsten Tankstelle, basierend auf Ihrer Tankmenge und der zusätzlichen Entfernung hierher.",
+    "isNearestHint": "Dies ist Ihre nächste Tankstelle — sie wird als Basis für die Vorteilsberechnung verwendet.",
+    "approxHint": "Straßenentfernung nicht verfügbar — es wird eine geschätzte Entfernung verwendet."
+  },
+  "stationDetails": {
+    "title": "Tankstellendetails",
+    "prices": "Kraftstoffpreise",
+    "openingHours": "Öffnungszeiten",
+    "wholeDay": "Durchgehend geöffnet",
+    "overrides": "Sonderöffnungszeiten",
+    "noHours": "Keine Öffnungszeiten verfügbar.",
+    "loading": "Details werden geladen…"
+  }
+}

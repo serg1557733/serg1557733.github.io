@@ -1,0 +1,134 @@
+{
+  "configVersion": 1,
+  "timestamp": 1788462499051,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/chunk-4X36HX5K.js",
+        "/chunk-6XPM6YYZ.js",
+        "/chunk-CLSL56GB.js",
+        "/chunk-DEIP7HK7.js",
+        "/chunk-KTPQP26F.js",
+        "/chunk-OFXF523N.js",
+        "/chunk-Q23KE2TT.js",
+        "/chunk-REKQOQLY.js",
+        "/chunk-SKMTKUIY.js",
+        "/chunk-Y3PKQZE6.js",
+        "/chunk-ZW5PGAES.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main-4Y3V2XES.js",
+        "/manifest.webmanifest",
+        "/polyfills-5CFQRCPP.js",
+        "/styles-LDKSQNXO.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/icons/icon-128x128.png",
+        "/icons/icon-144x144.png",
+        "/icons/icon-152x152.png",
+        "/icons/icon-192x192.png",
+        "/icons/icon-384x384.png",
+        "/icons/icon-512x512.png",
+        "/icons/icon-72x72.png",
+        "/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "i18n",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/i18n/de.json",
+        "/i18n/en.json",
+        "/i18n/ru.json"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "stations-api",
+      "patterns": [
+        "https:\\/\\/creativecommons\\.tankerkoenig\\.de\\/.*",
+        "https:\\/\\/router\\.project-osrm\\.org\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 50,
+      "maxAge": 3600000,
+      "timeoutMs": 5000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/chunk-4X36HX5K.js": "3920080f24a91b505e5497bf1cc643de99bedaab",
+    "/chunk-6XPM6YYZ.js": "5eb3bc31337adc6cb6843fe27d5956b55b0a89d4",
+    "/chunk-CLSL56GB.js": "7d7a3e28497cd70f4624c1cceb5d7cdd15d46b5e",
+    "/chunk-DEIP7HK7.js": "91bacc8a13ece3d68d27ec6c13e88ac7bfc26a02",
+    "/chunk-KTPQP26F.js": "8c59d94d764cc58322c0929aab1425fc92ca75af",
+    "/chunk-OFXF523N.js": "aba7da5fa7fe0364b7f04297f6f3bf6d1ab3d91a",
+    "/chunk-Q23KE2TT.js": "8e4870d817ca51bbac2cb77815da66dd9f214e6b",
+    "/chunk-REKQOQLY.js": "1a5a59f0c4ce6b2714fbe73b7ae184a33cb3cbfe",
+    "/chunk-SKMTKUIY.js": "9f41b12d6e6edd007465793ce0e78c005b209868",
+    "/chunk-Y3PKQZE6.js": "b9340f44beae67ff7a833d4c7b24c9e3c66fcdaa",
+    "/chunk-ZW5PGAES.js": "e0ef6b551c99c797356ea35323816aaf376f59e9",
+    "/favicon.ico": "524e9cb9d76b744b11533f175f465d61b7d128be",
+    "/i18n/de.json": "243ea4eeff5adc9574d87487ce4c7c38f69577d1",
+    "/i18n/en.json": "94b11a351a4b4c76f2e4bd9eef64c7922fbd3cdf",
+    "/i18n/ru.json": "1ca654d1688577dbeafba8991b919553939baba5",
+    "/icons/icon-128x128.png": "ecbd9c0ffc2df4884c9ac8489487abbeed5ede6e",
+    "/icons/icon-144x144.png": "7f9a565d09ac3526ebc3dcf17a8496d506e7b7c3",
+    "/icons/icon-152x152.png": "ce8a77c971bee2e88d67d7d6d6eb41e5229f59a0",
+    "/icons/icon-192x192.png": "7d3ecad2a931c151a832ed8c1e6e30819f973fac",
+    "/icons/icon-384x384.png": "90cfb76be0767b9d35ae1bef4a22e565ab023bb8",
+    "/icons/icon-512x512.png": "285e01edeb8cc985ea9984a29baf0933d24d9b69",
+    "/icons/icon-72x72.png": "75ce02bec1e8a5daea863f0166535d151d020b7d",
+    "/icons/icon-96x96.png": "1bca4d6aabb63dc95cc36d89f64aef111b569421",
+    "/index.html": "5042a29c2cf306fd985eada7f910fcb96d63c79b",
+    "/main-4Y3V2XES.js": "b1f7fcc84187e89fdd2fcd5b112072f34f774cab",
+    "/manifest.webmanifest": "631df54f09eb8ca6725eb372cee105435e21dbbc",
+    "/polyfills-5CFQRCPP.js": "f2241e9a25858f895ce299d15f6f22e849e2fd72",
+    "/styles-LDKSQNXO.css": "d37e31ba1c0c30dcbd5e0372c112b6e90b72983e"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

@@ -1,0 +1,111 @@
+{
+  "header": {
+    "title": "Fuel Finder"
+  },
+  "address": {
+    "placeholder": "Enter an address or city",
+    "geoAria": "Use my location",
+    "searchAria": "Search"
+  },
+  "error": {
+    "locationDenied": "Could not determine your location. Please enter an address manually.",
+    "addressNotFound": "Address not found.",
+    "stationsLoad": "Failed to load nearby stations.",
+    "route": "Could not build a route.",
+    "stationDetails": "Failed to load station details."
+  },
+  "status": {
+    "loading": "Loading stations…",
+    "noLocation": "Allow location access or enter an address.",
+    "noResults": "No stations match the current filters."
+  },
+  "filter": {
+    "title": "Filters",
+    "found": "Found: {{count}}",
+    "fuel": {
+      "label": "Fuel type",
+      "all": "All",
+      "e5": "E5",
+      "e10": "E10",
+      "diesel": "Diesel"
+    },
+    "sort": {
+      "label": "Sort by",
+      "distance": "Distance",
+      "price": "Price",
+      "benefit": "Best deal"
+    },
+    "radius": {
+      "label": "Radius: {{km}} km"
+    },
+    "openOnly": "Open only",
+    "favoritesOnly": "Favorites only"
+  },
+  "card": {
+    "open": "Open",
+    "closed": "Closed",
+    "favoriteAdd": "Add to favorites",
+    "favoriteRemove": "Remove from favorites",
+    "distance": "{{value}} km",
+    "openInMaps": "Directions",
+    "nearest": "Nearest",
+    "fuel": {
+      "e5": "E5",
+      "e10": "E10",
+      "diesel": "Diesel"
+    }
+  },
+  "sheet": {
+    "stationsNearby": "{{count}} stations nearby",
+    "findStations": "Find stations"
+  },
+  "locate": {
+    "aria": "Center on my location"
+  },
+  "settings": {
+    "aria": "Settings"
+  },
+  "install": {
+    "action": "Install app"
+  },
+  "theme": {
+    "title": "Theme",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "aria": "Language",
+    "en": "English",
+    "ru": "Russian",
+    "de": "German"
+  },
+  "vehicle": {
+    "title": "My vehicle",
+    "fuelType": "Fuel type",
+    "consumption": "Consumption (l/100km)",
+    "consumptionPlaceholder": "e.g. 6.5",
+    "refuelLiters": "Refuel amount (optional, liters)",
+    "refuelPlaceholder": "e.g. 40",
+    "refuelHint": "Used to estimate savings vs. the nearest station.",
+    "profitDescription": "How it works: benefit = (nearest price − this price) × liters refueled − extra fuel spent driving here instead of the nearest station.",
+    "save": "Save"
+  },
+  "trip": {
+    "fuelCost": "Fuel for the trip",
+    "benefit": "Net benefit",
+    "loss": "Net loss",
+    "setupVehicle": "Set up your vehicle to see savings",
+    "vsNearestHint": "Calculated vs. the nearest station, based on your refuel amount and the extra distance to get here.",
+    "isNearestHint": "This is your nearest station — used as the baseline for benefit calculations.",
+    "approxHint": "Road distance unavailable — using an estimated distance."
+  },
+  "stationDetails": {
+    "title": "Station details",
+    "prices": "Fuel prices",
+    "openingHours": "Opening hours",
+    "wholeDay": "Open 24 hours",
+    "overrides": "Special hours",
+    "noHours": "No opening hours available.",
+    "loading": "Loading details…"
+  }
+}
