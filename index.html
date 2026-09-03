@@ -1,88 +1,17 @@
 <!doctype html>
-<html>
-  <head>
-    <title>Fuel Finder</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#2563eb" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Fuel Finder" />
-    <link rel="manifest" href="./manifest.json" />
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/ol@latest/ol.css"
-    />
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial;
-      }
-      #map {
-        width: 100%;
-        height: 50vh;
-      }
-      #controls {
-        padding: 10px;
-      }
-      #stations {
-        padding: 10px;
-      }
-      .station {
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        padding: 10px;
-        margin-bottom: 10px;
-      }
-      .open {
-        border-color: green;
-      }
-      .closed {
-        border-color: red;
-      }
-      .cheapest {
-        border: 2px solid #f59e0b;
-        background: #fffbeb;
-      }
-      .cheapest-badge {
-        background: #f59e0b;
-        color: #7c2d00;
-        font-size: 12px;
-        font-weight: 600;
-        padding: 2px 8px;
-        border-radius: 4px;
-        display: inline-block;
-        margin-bottom: 6px;
-      }
-      .highlight {
-        font-weight: bold;
-        color: #b45309;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="gps-status">
-      <div class="fuel-search">
-        <div class="radar"></div>
-        <div class="fuel-icon">⛽</div>
-      </div>
-      <h2>Location access denied.</h2>
-      <p>Please allow location access and reload the page.</p>
-    </div>
-    <div id="controls"></div>
-    <div id="stations"></div>
-    <div id="map"></div>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/ol@latest/dist/ol.js"
-    ></script>
-    <script src="./ol.js"></script>
-    <script src="./sw.js"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./service-worker.js");
-      }
-    </script>
-  </body>
+<html lang="ru" data-beasties-container>
+<head>
+  <meta charset="utf-8">
+  <title>Fuel Finder</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+<style>:root{--ol-background-color:white;--ol-accent-background-color:#F5F5F5;--ol-subtle-background-color:rgba(128, 128, 128, .25);--ol-partial-background-color:rgba(255, 255, 255, .75);--ol-foreground-color:#333333;--ol-subtle-foreground-color:#666666;--ol-brand-color:#00AAFF}:root{--bg-base:#0b0f1a;--bg-gradient:radial-gradient( circle at 15% 0%, rgba(99, 102, 241, .28) 0%, transparent 45% ), radial-gradient( circle at 90% 10%, rgba(56, 189, 248, .22) 0%, transparent 40% ), radial-gradient( circle at 50% 100%, rgba(168, 85, 247, .18) 0%, transparent 55% ), #0b0f1a;--glass-bg:rgba(62, 62, 64, .51);--glass-bg-strong:rgba(255, 255, 255, .09);--glass-border:rgba(255, 255, 255, .12);--glass-blur:blur(20px);--text-primary:#ebeded;--text-secondary:#fbbf24;--text-muted:#ecf1d0;--accent:#6163f7;--accent-2:#38bdf8;--accent2-solid:#0369a1;--accent-gradient:linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);--accent-solid-gradient:linear-gradient(135deg, #6366f1 0%, #4338ca 100%);--on-accent-solid:#ffffff;--success:#34d399;--success-bg:rgba(52, 211, 153, .14);--success-badge-border:rgba(52, 211, 153, .35);--danger:#f87171;--danger-bg:rgba(248, 113, 113, .14);--warning:#fbbf24;--on-accent:#0b0f1a;--surface-sunken:rgba(0, 0, 0, .2);--accent-tint-weak:rgba(99, 102, 241, .08);--accent-tint-border:rgba(99, 102, 241, .2);--accent-shadow-strong:rgba(99, 102, 241, .4);--accent2-tint-weak:rgba(56, 189, 248, .08);--accent2-tint-border:rgba(56, 189, 248, .3);--accent2-badge-border:rgba(56, 189, 248, .5);--accent2-badge-shadow:rgba(56, 189, 248, .35);--radius-sm:10px;--radius-md:16px;--radius-lg:22px;--shadow-glass:0 8px 32px rgba(0, 0, 0, .35);--shadow-float:0 4px 16px rgba(0, 0, 0, .25);color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg-gradient);background-attachment:fixed;color:var(--text-primary);-webkit-tap-highlight-color:transparent}app-root{display:block;height:100%}</style><link rel="stylesheet" href="styles-LDKSQNXO.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-LDKSQNXO.css"></noscript></head>
+<body>
+  <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+<link rel="modulepreload" href="chunk-4X36HX5K.js"><script src="polyfills-5CFQRCPP.js" type="module"></script><script src="main-4Y3V2XES.js" type="module"></script></body>
 </html>
