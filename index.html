@@ -1,17 +1,115 @@
 <!doctype html>
 <html lang="ru" data-beasties-container>
-<head>
-  <meta charset="utf-8">
-  <title>Fuel Finder</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0f172a">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
-  <link rel="manifest" href="manifest.webmanifest">
-<style>:root{--ol-background-color:white;--ol-accent-background-color:#F5F5F5;--ol-subtle-background-color:rgba(128, 128, 128, .25);--ol-partial-background-color:rgba(255, 255, 255, .75);--ol-foreground-color:#333333;--ol-subtle-foreground-color:#666666;--ol-brand-color:#00AAFF}:root{--bg-base:#0b0f1a;--bg-gradient:radial-gradient( circle at 15% 0%, rgba(99, 102, 241, .28) 0%, transparent 45% ), radial-gradient( circle at 90% 10%, rgba(56, 189, 248, .22) 0%, transparent 40% ), radial-gradient( circle at 50% 100%, rgba(168, 85, 247, .18) 0%, transparent 55% ), #0b0f1a;--glass-bg:rgba(62, 62, 64, .51);--glass-bg-strong:rgba(255, 255, 255, .09);--glass-border:rgba(255, 255, 255, .12);--glass-blur:blur(20px);--text-primary:#ebeded;--text-secondary:#fbbf24;--text-muted:#ecf1d0;--accent:#6163f7;--accent-2:#38bdf8;--accent2-solid:#0369a1;--accent-gradient:linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);--accent-solid-gradient:linear-gradient(135deg, #6366f1 0%, #4338ca 100%);--on-accent-solid:#ffffff;--success:#34d399;--success-bg:rgba(52, 211, 153, .14);--success-badge-border:rgba(52, 211, 153, .35);--danger:#f87171;--danger-bg:rgba(248, 113, 113, .14);--warning:#fbbf24;--on-accent:#0b0f1a;--surface-sunken:rgba(0, 0, 0, .2);--accent-tint-weak:rgba(99, 102, 241, .08);--accent-tint-border:rgba(99, 102, 241, .2);--accent-shadow-strong:rgba(99, 102, 241, .4);--accent2-tint-weak:rgba(56, 189, 248, .08);--accent2-tint-border:rgba(56, 189, 248, .3);--accent2-badge-border:rgba(56, 189, 248, .5);--accent2-badge-shadow:rgba(56, 189, 248, .35);--radius-sm:10px;--radius-md:16px;--radius-lg:22px;--shadow-glass:0 8px 32px rgba(0, 0, 0, .35);--shadow-float:0 4px 16px rgba(0, 0, 0, .25);color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg-gradient);background-attachment:fixed;color:var(--text-primary);-webkit-tap-highlight-color:transparent}app-root{display:block;height:100%}</style><link rel="stylesheet" href="styles-LDKSQNXO.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-LDKSQNXO.css"></noscript></head>
-<body>
-  <app-root></app-root>
-  <noscript>Please enable JavaScript to continue using this application.</noscript>
-<link rel="modulepreload" href="chunk-4X36HX5K.js"><script src="polyfills-5CFQRCPP.js" type="module"></script><script src="main-4Y3V2XES.js" type="module"></script></body>
+  <head>
+    <meta charset="utf-8">
+    <title>Fuel Finder</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <script>
+      // Resolve the theme before first paint so the loading screen matches
+      // the user's saved/system preference instead of always flashing dark.
+      (function () {
+        try {
+          var saved = localStorage.getItem('fuel-finder-theme');
+          var prefersDark =
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme =
+            saved === 'light' || saved === 'dark'
+              ? saved
+              : prefersDark
+                ? 'dark'
+                : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <style>
+      #app-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        background: #0b0f1a;
+        transition: opacity 0.25s ease;
+      }
+      html[data-theme="light"] #app-loader {
+        background: #f4f9ff;
+      }
+      #app-loader .app-loader-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35);
+      }
+      #app-loader .app-loader-spinner {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 3px solid rgba(56, 189, 248, 0.25);
+        border-top-color: #38bdf8;
+        animation: app-loader-spin 0.8s linear infinite;
+      }
+      #app-loader.app-loader-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      @keyframes app-loader-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  <style>:root{--ol-background-color:white;--ol-accent-background-color:#F5F5F5;--ol-subtle-background-color:rgba(128, 128, 128, .25);--ol-partial-background-color:rgba(255, 255, 255, .75);--ol-foreground-color:#333333;--ol-subtle-foreground-color:#666666;--ol-brand-color:#00AAFF}:root{--bg-base:#0b0f1a;--bg-gradient:radial-gradient( circle at 15% 0%, rgba(99, 102, 241, .28) 0%, transparent 45% ), radial-gradient( circle at 90% 10%, rgba(56, 189, 248, .22) 0%, transparent 40% ), radial-gradient( circle at 50% 100%, rgba(168, 85, 247, .18) 0%, transparent 55% ), #0b0f1a;--glass-bg:rgba(62, 62, 64, .51);--glass-bg-strong:rgba(255, 255, 255, .09);--glass-border:rgba(255, 255, 255, .12);--glass-blur:blur(20px);--text-primary:#ebeded;--text-secondary:#fbbf24;--text-muted:#ecf1d0;--accent:#6163f7;--accent-2:#38bdf8;--accent2-solid:#0369a1;--accent-gradient:linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);--accent-solid-gradient:linear-gradient(135deg, #6366f1 0%, #4338ca 100%);--on-accent-solid:#ffffff;--success:#34d399;--success-bg:rgba(59, 186, 140, .14);--success-badge-border:rgba(52, 211, 153, .35);--danger:#f87171;--danger-bg:rgba(248, 113, 113, .14);--warning:#fbbf24;--on-accent:#0b0f1a;--surface-sunken:rgba(0, 0, 0, .2);--accent-tint-weak:rgba(99, 102, 241, .08);--accent-tint-strong:rgba(129, 131, 234, .16);--accent-tint-border:rgba(99, 102, 241, .2);--accent-shadow-strong:rgba(99, 102, 241, .4);--accent-tint-text:#a5b4fc;--accent2-tint-weak:rgba(56, 189, 248, .08);--accent2-tint-strong:rgba(56, 189, 248, .16);--accent2-tint-border:rgba(56, 189, 248, .3);--accent2-badge-border:rgba(56, 189, 248, .5);--accent2-badge-shadow:rgba(56, 189, 248, .35);--accent2-tint-text:var(--accent-2);--radius-sm:10px;--radius-md:16px;--radius-lg:22px;--shadow-glass:0 8px 32px rgba(0, 0, 0, .35);--shadow-float:0 4px 16px rgba(0, 0, 0, .25);color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;height:100%;padding:0;overflow-x:hidden;width:100%;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg-gradient);background-size:cover;background-repeat:no-repeat;color:var(--text-primary);-webkit-tap-highlight-color:transparent}app-root{display:block;box-sizing:border-box;min-height:100vh}</style><link rel="stylesheet" href="styles-VUCE764H.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-VUCE764H.css"></noscript></head>
+  <body>
+    <div id="app-loader" aria-hidden="true">
+      <div class="app-loader-icon">⛽</div>
+      <div class="app-loader-spinner"></div>
+    </div>
+    <app-root></app-root>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+    <script>
+      // Hide the loading screen as soon as Angular renders real content
+      // inside <app-root>, then remove it from the DOM after the fade-out.
+      (function () {
+        var loader = document.getElementById("app-loader");
+        var appRoot = document.querySelector("app-root");
+        if (!loader || !appRoot) return;
+
+        function hideLoader() {
+          loader.classList.add("app-loader-hidden");
+          setTimeout(function () {
+            loader.remove();
+          }, 300);
+        }
+
+        var observer = new MutationObserver(function () {
+          if (appRoot.childNodes.length > 0) {
+            observer.disconnect();
+            hideLoader();
+          }
+        });
+        observer.observe(appRoot, { childList: true });
+
+        // Fallback in case Angular fails to bootstrap in time or the
+        // MutationObserver never fires (e.g. very old browsers).
+        setTimeout(hideLoader, 8000);
+      })();
+    </script>
+  <link rel="modulepreload" href="chunk-YJZNTDNK.js"><link rel="modulepreload" href="chunk-4X36HX5K.js"><script src="polyfills-5CFQRCPP.js" type="module"></script><script src="main-5624RJL4.js" type="module"></script></body>
 </html>
