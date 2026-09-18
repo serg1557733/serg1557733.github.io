@@ -11,6 +11,7 @@
     "locationDenied": "Standort konnte nicht ermittelt werden. Bitte geben Sie eine Adresse ein.",
     "addressNotFound": "Adresse nicht gefunden.",
     "stationsLoad": "Tankstellen konnten nicht geladen werden.",
+    "chargingLoad": "Ladestationen konnten nicht geladen werden.",
     "route": "Route konnte nicht berechnet werden.",
     "stationDetails": "Details zur Tankstelle konnten nicht geladen werden."
   },
@@ -19,9 +20,19 @@
     "noLocation": "Bitte Standortzugriff erlauben oder Adresse eingeben.",
     "noResults": "Keine Tankstellen für die aktuellen Filter."
   },
+  "evFilter": {
+    "connectorType": {
+      "label": "Steckertyp"
+    },
+    "minPower": {
+      "label": "Min. Leistung (kW)",
+      "placeholder": "z. B. 50"
+    }
+  },
   "filter": {
     "title": "Filter",
     "found": "Gefunden: {{count}}",
+    "reset": "Zurücksetzen",
     "fuel": {
       "label": "Kraftstoff",
       "all": "Alle",
@@ -49,15 +60,27 @@
     "distance": "{{value}} km",
     "openInMaps": "Route",
     "nearest": "Nächste",
+    "aprox": "ungefähr",
+    "myFuel": "Mein Kraftstoff: ",
     "fuel": {
       "e5": "E5",
       "e10": "E10",
       "diesel": "Diesel"
     }
   },
+  "evCard": {
+    "connectors": "Anschlüsse",
+    "upTo": "bis zu {{kw}} kW",
+    "usageCost": "Kosten",
+    "numberOfPoints": "{{count}} Ladepunkte"
+  },
   "sheet": {
     "stationsNearby": "{{count}} Tankstellen in der Nähe",
     "findStations": "Tankstellen finden"
+  },
+  "list": {
+    "expandAll": "Alle ausklappen",
+    "collapseAll": "Alle einklappen"
   },
   "locate": {
     "aria": "Auf meinen Standort zentrieren"
@@ -67,6 +90,11 @@
   },
   "install": {
     "action": "App installieren"
+  },
+  "mode": {
+    "title": "Modus",
+    "fuel": "Benzin",
+    "ev": "Elektro"
   },
   "theme": {
     "title": "Design",
