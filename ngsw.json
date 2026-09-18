@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1789723216388,
+  "timestamp": 1789761929589,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -26,7 +26,7 @@
         "/chunk-ZW5PGAES.js",
         "/favicon.ico",
         "/index.html",
-        "/main-5624RJL4.js",
+        "/main-TZMY7BFC.js",
         "/manifest.webmanifest",
         "/polyfills-5CFQRCPP.js",
         "/styles-VUCE764H.css"
@@ -76,7 +76,9 @@
       "name": "stations-api",
       "patterns": [
         "https:\\/\\/creativecommons\\.tankerkoenig\\.de\\/.*",
-        "https:\\/\\/router\\.project-osrm\\.org\\/.*"
+        "https:\\/\\/router\\.project-osrm\\.org\\/.*",
+        "https:\\/\\/api\\.openchargemap\\.io\\/.*",
+        "https:\\/\\/nominatim\\.openstreetmap\\.org\\/.*"
       ],
       "strategy": "freshness",
       "maxSize": 50,
@@ -107,19 +109,19 @@
     "/fonts/DSEG7Modern-Regular.woff2": "5728731a1c32692e816541aacc41b46c063f0275",
     "/fonts/DSEG7SEGGCHAN-Regular.woff": "78ba8933a2e3ad2465bb5ee5d236bf63fdd19dba",
     "/fonts/DSEG7SEGGCHAN-Regular.woff2": "16fafc29920d5f29917ce782d5542271bcba377a",
-    "/i18n/de.json": "cca8653b7da2938f150e5778e17ececdfa730295",
-    "/i18n/en.json": "d616ece311e5bd110960b45661af8e81bb12ab88",
-    "/i18n/ru.json": "5f89cf3be074e941cda20fd89bc38b2f3b7363af",
-    "/icons/icon-128x128.png": "ecbd9c0ffc2df4884c9ac8489487abbeed5ede6e",
-    "/icons/icon-144x144.png": "7f9a565d09ac3526ebc3dcf17a8496d506e7b7c3",
-    "/icons/icon-152x152.png": "ce8a77c971bee2e88d67d7d6d6eb41e5229f59a0",
-    "/icons/icon-192x192.png": "7d3ecad2a931c151a832ed8c1e6e30819f973fac",
-    "/icons/icon-384x384.png": "90cfb76be0767b9d35ae1bef4a22e565ab023bb8",
-    "/icons/icon-512x512.png": "285e01edeb8cc985ea9984a29baf0933d24d9b69",
-    "/icons/icon-72x72.png": "75ce02bec1e8a5daea863f0166535d151d020b7d",
-    "/icons/icon-96x96.png": "1bca4d6aabb63dc95cc36d89f64aef111b569421",
-    "/index.html": "679e81cbc8deaeb40eaa6f156eb21aec22d814af",
-    "/main-5624RJL4.js": "ba520c31cc19ba6a92c00a024b00b0183faf2419",
+    "/i18n/de.json": "829b7b2c380b7010f9b49ff2b538acdc0d01326d",
+    "/i18n/en.json": "f34138481328e92de565f9c4549ceb507cfb57ab",
+    "/i18n/ru.json": "d647e3dc7e8f486cb4379fbfe9cbe850beceed51",
+    "/icons/icon-128x128.png": "d034f1a74f79aabc989ad19aeb1a5cec3736890b",
+    "/icons/icon-144x144.png": "0d5507b5375551f8895ae472c4f135d1a5a36ff3",
+    "/icons/icon-152x152.png": "e213429acbc1fb8244775fab9236e7bfff2a5c52",
+    "/icons/icon-192x192.png": "18eaebc694196b6f44e4ae6208ed4af78058dd76",
+    "/icons/icon-384x384.png": "44ef7c38f8539058351f26028daf21787c15c3f8",
+    "/icons/icon-512x512.png": "4837dc8358a7f3c6a61863fe92def6e738d9830b",
+    "/icons/icon-72x72.png": "2dc15e058c232ad6657888759da38c51a1136049",
+    "/icons/icon-96x96.png": "dce2656de56a95fe0fb230cf498cf8c500e805f9",
+    "/index.html": "129d77a791ef7dd70569565e4d28d3bda7e4ae7b",
+    "/main-TZMY7BFC.js": "88ad99fc0f6c1ca86c47afe16a896947cab20d30",
     "/manifest.webmanifest": "631df54f09eb8ca6725eb372cee105435e21dbbc",
     "/polyfills-5CFQRCPP.js": "f2241e9a25858f895ce299d15f6f22e849e2fd72",
     "/styles-VUCE764H.css": "f51652a22ff853d37007813c51528d143278ade6"

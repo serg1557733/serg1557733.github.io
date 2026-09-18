@@ -13,7 +13,10 @@
     "stationsLoad": "Failed to load nearby stations.",
     "chargingLoad": "Failed to load nearby charging stations.",
     "route": "Could not build a route.",
-    "stationDetails": "Failed to load station details."
+    "stationDetails": "Failed to load station details.",
+    "tripNoVehicle": "Set up your vehicle first to calculate trip cost.",
+    "tripNoPriceData": "No fuel price data available for your fuel type.",
+    "noLocation": "Allow location access or enter an address first."
   },
   "status": {
     "loading": "Loading stations…",
@@ -91,6 +94,16 @@
   "install": {
     "action": "Install app"
   },
+  "installPrompt": {
+    "title": "Install Fuel Finder",
+    "description": "Install the app on your device for quicker access and an offline-friendly experience.",
+    "install": "Install",
+    "notNow": "Not now"
+  },
+  "notifications": {
+    "title": "Price alerts nearby",
+    "radius": "Notify within {{km}} km"
+  },
   "mode": {
     "title": "Mode",
     "fuel": "Fuel",
@@ -109,6 +122,10 @@
   },
   "vehicle": {
     "title": "My vehicle",
+    "make": "Make",
+    "makePlaceholder": "e.g. Volkswagen",
+    "model": "Model",
+    "modelPlaceholder": "e.g. Golf",
     "fuelType": "Fuel type",
     "consumption": "Consumption (l/100km)",
     "consumptionPlaceholder": "e.g. 6.5",
@@ -116,6 +133,19 @@
     "refuelPlaceholder": "e.g. 40",
     "refuelHint": "Used to estimate savings vs. the nearest station.",
     "profitDescription": "How it works: benefit = (nearest price − this price) × liters refueled − extra fuel spent driving here instead of the nearest station.",
+    "currentKm": "Current odometer (km)",
+    "currentKmPlaceholder": "e.g. 85000",
+    "maintenance": {
+      "title": "Maintenance intervals",
+      "oil": "Engine oil",
+      "fuelFilter": "Fuel filter",
+      "airFilter": "Air filter",
+      "cabinFilter": "Cabin filter",
+      "lastServiceKm": "Last changed at (km)",
+      "intervalKm": "Interval (km)",
+      "remaining": "{{km}} km remaining",
+      "overdue": "Overdue by {{km}} km"
+    },
     "save": "Save"
   },
   "trip": {
@@ -126,6 +156,17 @@
     "vsNearestHint": "Calculated vs. the nearest station, based on your refuel amount and the extra distance to get here.",
     "isNearestHint": "This is your nearest station — used as the baseline for benefit calculations.",
     "approxHint": "Road distance unavailable — using an estimated distance."
+  },
+  "tripCalculator": {
+    "title": "Trip fuel cost",
+    "address": "Where are you going?",
+    "addressPlaceholder": "Enter an address or city",
+    "roundTrip": "Round trip",
+    "calculate": "Calculate",
+    "calculating": "Calculating…",
+    "distance": "Distance",
+    "fuelLiters": "Fuel needed",
+    "fuelCost": "Estimated cost"
   },
   "stationDetails": {
     "title": "Station details",

@@ -13,7 +13,10 @@
     "stationsLoad": "Tankstellen konnten nicht geladen werden.",
     "chargingLoad": "Ladestationen konnten nicht geladen werden.",
     "route": "Route konnte nicht berechnet werden.",
-    "stationDetails": "Details zur Tankstelle konnten nicht geladen werden."
+    "stationDetails": "Details zur Tankstelle konnten nicht geladen werden.",
+    "tripNoVehicle": "Richten Sie zuerst Ihr Fahrzeug ein, um die Fahrtkosten zu berechnen.",
+    "tripNoPriceData": "Keine Preisdaten für Ihre Kraftstoffart verfügbar.",
+    "noLocation": "Bitte Standortzugriff erlauben oder zuerst eine Adresse eingeben."
   },
   "status": {
     "loading": "Tankstellen werden geladen…",
@@ -91,6 +94,16 @@
   "install": {
     "action": "App installieren"
   },
+  "installPrompt": {
+    "title": "Fuel Finder installieren",
+    "description": "Installieren Sie die App auf Ihrem Gerät für schnelleren Zugriff und Offline-Nutzung.",
+    "install": "Installieren",
+    "notNow": "Nicht jetzt"
+  },
+  "notifications": {
+    "title": "Preisbenachrichtigungen in der Nähe",
+    "radius": "Benachrichtigen im Umkreis von {{km}} km"
+  },
   "mode": {
     "title": "Modus",
     "fuel": "Benzin",
@@ -109,6 +122,10 @@
   },
   "vehicle": {
     "title": "Mein Fahrzeug",
+    "make": "Marke",
+    "makePlaceholder": "z. B. Volkswagen",
+    "model": "Modell",
+    "modelPlaceholder": "z. B. Golf",
     "fuelType": "Kraftstoffart",
     "consumption": "Verbrauch (l/100km)",
     "consumptionPlaceholder": "z. B. 6.5",
@@ -116,6 +133,19 @@
     "refuelPlaceholder": "z. B. 40",
     "refuelHint": "Wird zur Berechnung der Ersparnis gegenüber der nächsten Tankstelle verwendet.",
     "profitDescription": "So wird gerechnet: Vorteil = (Preis an der nächsten Tankstelle − Preis hier) × Tankmenge − zusätzliche Kraftstoffkosten für die Fahrt hierher statt zur nächsten Tankstelle.",
+    "currentKm": "Aktueller Kilometerstand (km)",
+    "currentKmPlaceholder": "z. B. 85000",
+    "maintenance": {
+      "title": "Wartungsintervalle",
+      "oil": "Motoröl",
+      "fuelFilter": "Kraftstofffilter",
+      "airFilter": "Luftfilter",
+      "cabinFilter": "Innenraumfilter",
+      "lastServiceKm": "Gewechselt bei (km)",
+      "intervalKm": "Intervall (km)",
+      "remaining": "Noch {{km}} km",
+      "overdue": "Überfällig um {{km}} km"
+    },
     "save": "Speichern"
   },
   "trip": {
@@ -126,6 +156,17 @@
     "vsNearestHint": "Berechnet im Vergleich zur nächsten Tankstelle, basierend auf Ihrer Tankmenge und der zusätzlichen Entfernung hierher.",
     "isNearestHint": "Dies ist Ihre nächste Tankstelle — sie wird als Basis für die Vorteilsberechnung verwendet.",
     "approxHint": "Straßenentfernung nicht verfügbar — es wird eine geschätzte Entfernung verwendet."
+  },
+  "tripCalculator": {
+    "title": "Fahrtkosten",
+    "address": "Wohin fahren Sie?",
+    "addressPlaceholder": "Adresse oder Stadt eingeben",
+    "roundTrip": "Hin- und Rückfahrt",
+    "calculate": "Berechnen",
+    "calculating": "Wird berechnet…",
+    "distance": "Entfernung",
+    "fuelLiters": "Benötigter Kraftstoff",
+    "fuelCost": "Geschätzte Kosten"
   },
   "stationDetails": {
     "title": "Tankstellendetails",
